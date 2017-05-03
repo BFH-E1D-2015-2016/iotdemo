@@ -5,7 +5,7 @@ Web application used to view data from a LoraWAN network
 
 ### For users:
 
-- Python `v 3.6`
+- Python `v 4.6`
 - Django `v. 3.11`
 
 ### For developers:
