@@ -4,11 +4,5 @@ python:
 
 install: "pip install -r requirements.txt"
 
-# Create a display for Firefox ( https://docs.travis-ci.com/user/gui-and-headless-browsers/ )
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-
 # command to run tests
-script: pytest --driver Firefox
+script: pytest --driver PhantomJS
