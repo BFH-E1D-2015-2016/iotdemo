@@ -13,4 +13,5 @@ Web application used to view data from a LoraWAN network
 - selenium `v. 3.4.1`
 - pytest `v. 3.0.7`
 - pytest-selenium `v. 1.9.1`
+- pytest-django `v 3.1.2`
 
