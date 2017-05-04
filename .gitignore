@@ -3,4 +3,5 @@
 geckodriver.log
 __pycache__/
 .cache/
+bower_components/
 
