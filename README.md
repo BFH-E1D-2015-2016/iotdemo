@@ -1,17 +1,56 @@
 # iotdemo
 Web application used to view data from a LoraWAN network
 
-## Dependencies
+[![Build Status](https://travis-ci.org/BFH-E2d/iotdemo.svg?branch=master)](https://travis-ci.org/BFH-E2d/iotdemo)
 
-### For users:
+## Features / Planned Features
 
-- Python `v 4.6`
-- Django `v. 3.11`
+- [X] Well tested
 
-### For developers:
+### Nodes / Measurements
 
-- selenium `v. 3.4.1`
-- pytest `v. 3.0.7`
-- pytest-selenium `v. 1.9.1`
-- pytest-django `v 3.1.2`
+- [ ] Temperature monitoring
+- [ ] Air quality monitoring
+
+### LoraWAN backend
+
+- [ ] TheThingsNetwork.org
+- [ ] loraserver.io
+- [ ] LoRaWAN Server by gotthardp
+
+## Limitations
+
+- Doesn't do anything at this time
+
+## Installation
+
+Install Python 3.6, and then run:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Contributing
+
+### Reporting issues
+
+Use this link: [Create a new issue](https://github.com/BFH-E2d/iotdemo/issues/new)
+
+### Developing new features / bug fix
+
+#### For beginner
+This application is developed using the Django web framework and the TDD
+(`Test Driven Development`) methodology. The best way to learn Python, 
+Django and TDD is to learn this great book: 
+
+[Test-Driven Development with Python](http://www.obeythetestinggoat.com/).
+
+#### For average programmer
+
+We use the Django Web Framework, our test are written to run with PyTest
+and we use Selenium to do our fonctional testing.
+
+
+
+
 
