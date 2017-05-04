@@ -31,7 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # From our app
     'dashboard',
+
+    # From thrid party
+    'djangobower',
+
+    # From django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,3 +126,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BOWER_COMPONENTS_ROOT = BASE_DIR + '/bower_components/'
+BOWER_INSTALLED_APPS = (
+    "bootstrap#3.3",
+)
+
+
+STATICFILES_FINDERS = [
+
+    'djangobower.finders.BowerFinder',
+
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]

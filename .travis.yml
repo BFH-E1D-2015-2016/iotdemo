@@ -6,7 +6,10 @@ install:
   - "pip install -r requirements.txt"
   - "pip install codecov"
   - "pip install pytest-cov"
+  - npm install -g bower
 
+before_script:
+  - python manage.py bower install
 
 # command to run tests
 script: pytest --cov=./ --driver PhantomJS
