@@ -5,6 +5,13 @@
     <title>IOT Monitoring System</title>
 </head>
 <body>
+    <h1>IOT Monitoring System</h1>
+
+    <table id="devices_list">
+        {% for device in devices %}
+            <tr><td>{{ forloop.counter }}: {{ device.name }}</td></tr>
+        {% endfor %}
+    </table>
 
 </body>
 </html>
