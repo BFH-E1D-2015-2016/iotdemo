@@ -2,6 +2,7 @@
 Web application used to view data from a LoraWAN network
 
 [![Build Status](https://travis-ci.org/BFH-E2d/iotdemo.svg?branch=master)](https://travis-ci.org/BFH-E2d/iotdemo)
+[![Code Coverage](https://codecov.io/gh/BFH-E2d/iotdemo/branch/master/graph/badge.svg)](https://codecov.io/gh/BFH-E2d/iotdemo)
 
 ## Features / Planned Features
 
