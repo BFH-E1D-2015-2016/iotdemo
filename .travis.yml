@@ -2,7 +2,15 @@ language: python
 python:
   - "3.6" # 3.6 development branch
 
-install: "pip install -r requirements.txt"
+install:
+  - "pip install -r requirements.txt"
+  - "pip install codecov"
+  - "pip install pytest-cov"
+
 
 # command to run tests
-script: pytest --driver PhantomJS
+script: pytest --cov=./ --driver PhantomJS
+
+
+after_success:
+  - codecov
