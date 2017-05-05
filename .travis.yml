@@ -1,7 +1,7 @@
 dist: trusty
 language: python
 python:
-  - "3.6" # 3.6 development branch
+  - "3.5" # Debian 9 use python 3.5, and we use debian 9 on our server
 
 addons:
   apt:
