@@ -144,4 +144,6 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
+
+if not 'TRAVIS' in os.environ:
+    SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
