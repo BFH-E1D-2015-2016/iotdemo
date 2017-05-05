@@ -31,12 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # From our app
-    'dashboard',
-
-    # From thrid party
-    'djangobower',
-
     # From django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+
+    # Third party
+    'djangobower',
+    'leaflet',
+
+    # Our app
+    'dashboard',
+    'lorawan',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +86,7 @@ WSGI_APPLICATION = 'iotdemo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
@@ -140,3 +143,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+
+if not 'TRAVIS' in os.environ:
+    SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
