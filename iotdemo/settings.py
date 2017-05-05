@@ -31,15 +31,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'xrt1m_7vr)k_pop^j5+@*n0u^%fs)bn2&pg+@9j0s851ecw-4e'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = []
 
 if on_server:
     DEBUG = False
-
-ALLOWED_HOSTS = ['iotdemo.bfh.ch']
-
+    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+    ALLOWED_HOSTS = [os.environ['DJANGO_ALLOWED_HOSTS']]
 
 # Application definition
 
