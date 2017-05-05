@@ -1,16 +1,16 @@
-{% load staticfiles %}<!DOCTYPE html>
+{% load staticfiles %}{%  load bootstrap3%}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     {% block head %}{% endblock %}
 
-    <link href="{%  static  'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    {% bootstrap_css %}
     {% block css %}{% endblock %}
 
 </head>
 <body>
     {% block body %}{% endblock %}
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap/dist/js/bootstram.min.js' %}"></script>
+    {%  bootstrap_javascript %}
 </body>
 </html>

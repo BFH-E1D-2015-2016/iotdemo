@@ -1,4 +1,4 @@
 django>=1.11.<1.12
 selenium>=3.4.1,<4.0
-django-bower>=5.2.0,<6.0
 django_leaflet>=0.22,<0.23
+django-bootstrap3>=8.2.3,<9.0

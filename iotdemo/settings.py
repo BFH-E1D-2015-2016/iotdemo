@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # Third party
     'djangobower',
     'leaflet',
+    'bootstrap3',
 
     # Our app
     'dashboard',
@@ -144,19 +145,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-BOWER_COMPONENTS_ROOT = BASE_DIR + '/bower_components/'
-BOWER_INSTALLED_APPS = (
-    "bootstrap#3.3",
-)
 
 
-STATICFILES_FINDERS = [
-
-    'djangobower.finders.BowerFinder',
-
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
 
 
 if not on_ci:
