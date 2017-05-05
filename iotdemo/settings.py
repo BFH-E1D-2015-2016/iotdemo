@@ -105,7 +105,7 @@ DATABASES = {
 if on_server:
     # We are on a staging or production server
     DATABASES["default"]["name"] = os.path.join(BASE_DIR, '../database/db.sqlite3')
-
+    STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
