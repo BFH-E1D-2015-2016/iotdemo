@@ -18,10 +18,8 @@ install:
   - "pip install -r requirements.txt"
   - "pip install codecov"
   - "pip install coverage"
-  - npm install -g bower
 
 before_script:
-  - python manage.py bower install
   - python manage.py migrate
 
 # command to run tests
