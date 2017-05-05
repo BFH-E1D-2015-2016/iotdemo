@@ -35,6 +35,9 @@ SECRET_KEY = 'xrt1m_7vr)k_pop^j5+@*n0u^%fs)bn2&pg+@9j0s851ecw-4e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if on_server:
+    DEBUG = False
+
 ALLOWED_HOSTS = ['iotdemo.bfh.ch']
 
 
