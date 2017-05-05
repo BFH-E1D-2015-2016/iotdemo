@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     # Third party
-    'djangobower',
     'leaflet',
     'bootstrap3',
 
