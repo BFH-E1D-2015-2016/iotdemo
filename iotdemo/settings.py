@@ -11,6 +11,16 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import getpass
+
+on_server = False
+on_ci = False
+
+if getpass.getuser() == "django":
+    on_server = True
+
+if 'TRAVIS' in os.environ:
+    on_ci = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -91,6 +101,10 @@ DATABASES = {
     }
 }
 
+if on_server:
+    # We are on a staging or production server
+    DATABASES["default"]["name"] = os.path.join(BASE_DIR, '../database/db.sqlite3')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -145,5 +159,5 @@ STATICFILES_FINDERS = [
 ]
 
 
-if not 'TRAVIS' in os.environ:
+if not on_ci:
     SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
