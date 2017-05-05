@@ -26,8 +26,8 @@ before_script:
 
 # command to run tests
 script:
-  - coverage run python3 manage.py test
-  - coverage run python3 manage.py test functional_tests
+  - coverage run python manage.py test
+  - coverage run python manage.py test functional_tests
 
 
 
