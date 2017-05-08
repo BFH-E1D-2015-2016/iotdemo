@@ -60,6 +60,10 @@ INSTALLED_APPS = [
     'lorawan',
 ]
 
+if 'ALL_TESTS' in os.environ:
+    INSTALLED_APPS.append('functional_tests')
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

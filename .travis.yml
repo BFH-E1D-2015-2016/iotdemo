@@ -24,10 +24,7 @@ before_script:
 
 # command to run tests
 script:
-  - coverage run manage.py test
-  - coverage run manage.py test functional_tests
-
-
+  - ALL_TESTS=1 coverage run manage.py test
 
 after_success:
   - codecov
