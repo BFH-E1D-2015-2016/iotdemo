@@ -77,14 +77,30 @@
                 </script>
 
                 <table id="devices_list" class="table table-striped">
+                    <thead>
                     <tr>
-                        <td>Devices</td>
+                        <th>ID</th>
+                        <th>Devices</th>
+                        <th>Status</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {% for device in devices %}
                         <tr>
-                            <td>{{ forloop.counter }}: {{ device.name }}</td>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ device.name }}</td>
+                                {% if device.status == "O" %}
+                                    <td><span class="label label-success" style="width: 75px; display: block;">Ok</span></td>
+                                {% elif device.status == "W" %}
+                                    <td><span class="label label-warning" style="width: 75px; display: block;">Warning</span></td>
+                                {%  elif device.status == "E" %}
+                                    <td><span class="label label-danger" style="width: 75px; display: block;">Error</span></td>
+                                {% else %}
+                                    <td><span class="label label-default" style="width: 75px; display: block;">Invalid {{ device.status }}</span></td>
+                                {% endif %}
                         </tr>
                     {% endfor %}
+                    </tbody>
                 </table>
 
             </div>

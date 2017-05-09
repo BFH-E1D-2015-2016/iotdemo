@@ -39,11 +39,11 @@ class NewVisitorTest(LiveServerTestCase):
 
         # He found a map
 
-        # He found a list of devices
+        # He found a list of devices with a status
         table = self.browser.find_element_by_id("devices_list")
-        rows = table.find_elements_by_tag_name('tr')
+        first_row = table.find_element_by_tag_name('tbody tr')
+        self.assertIn("Devices 1", first_row.text)
+        self.assertIn("OK", first_row.text)
 
-
-        assert any(row.text == "1: Devices 1" for row in rows)
 
 

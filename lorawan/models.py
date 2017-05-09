@@ -22,6 +22,20 @@ class Device(models.Model):
         ],
     )
 
+    ERROR = "E"
+    WARNING = "W"
+    OK = "O"
+
+    STATUS_CHOICES = (
+        (ERROR, "ERROR"),
+        (WARNING, "WARNING"),
+        (OK, "OK"),
+    )
+
     name = models.CharField(max_length=80)
+    status = models.CharField(
+        max_length=1,
+        choices=STATUS_CHOICES,
+    )
 
     location = gismodels.PointField(null=True)
