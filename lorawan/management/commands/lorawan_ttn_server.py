@@ -39,7 +39,7 @@ def import_payload_data(data):
 
 
 def on_message(client: mqtt_client.Client, userdata, msg: MQTTMessage ):
-   import_payload_data(json.loads(msg.payload))
+   import_payload_data(json.loads(msg.payload.decode()))
 
 def on_connect(client: mqtt_client.Client, userdata, flags, rc):
     if rc == 0:
