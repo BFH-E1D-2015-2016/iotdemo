@@ -2,7 +2,12 @@ from django.db import models
 from django.core.validators import RegexValidator
 from django.contrib.gis.db import models as gismodels
 
+import binascii
+
 class Device(models.Model):
+
+    def __str__(self):
+        return self.name
 
     # Each LoraWAN device has a 64bit unique devices ID called `DevEUI`
     # using the EUI-64 format (Extended Unique Identifier, as specified in RFC2373)
@@ -39,3 +44,15 @@ class Device(models.Model):
     )
 
     location = gismodels.PointField(null=True)
+
+class Message(models.Model):
+    def __str__(self):
+        payload_hex = binascii.hexlify(self.content)
+        return "From " + self.device.name + " - " + str(payload_hex) + " at " + str(self.datetime)
+
+    content = models.BinaryField()
+    datetime = models.DateTimeField()
+    port = models.PositiveIntegerField()
+    device = models.ForeignKey(Device)
+
+

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import getpass
 
+
+
 on_server = False
 on_ci = False
 
@@ -24,6 +26,15 @@ if 'TRAVIS' in os.environ:
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from dotenv import load_dotenv
+
+    dotenv_path = os.path.join(BASE_DIR, ".env")
+    load_dotenv(dotenv_path)
+except:
+    # On server, we didn't use dotenv
+    pass
 
 
 # Quick-start development settings - unsuitable for production
@@ -156,4 +167,11 @@ LEAFLET_CONFIG = {
 
     # Use https instead of http:
    'TILES': 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+}
+
+
+LORAWAN_BACKEND_TTN = {
+    "REGION": "EU",
+    "APP_ID": "bfhtest1",
+    "APP_ACCESS_KEY": os.environ["TTN_ACCESS_KEY"],
 }

@@ -4,4 +4,11 @@ from leaflet.admin import LeafletGeoAdmin
 
 from lorawan import models
 
-admin.site.register(models.Device, LeafletGeoAdmin)
+class DeviceAdmin(LeafletGeoAdmin):
+    list_display = ("name", "DevEUI", "status")
+
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ("device","port","datetime", "content")
+
+admin.site.register(models.Device, DeviceAdmin)
+admin.site.register(models.Message, MessageAdmin)
