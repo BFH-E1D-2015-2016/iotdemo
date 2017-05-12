@@ -21,7 +21,7 @@ on_server = False
 if 'TRAVIS' in os.environ:
     on_ci = True
 
-if getpass.getpass() == 'django':
+if getpass.getuser() == 'django':
     on_server = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
