@@ -43,7 +43,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'xrt1m_7vr)k_pop^j5+@*n0u^%fs)b
 DEBUG = bool(os.environ.get("DJANGO_DEBUG", False))
 ALLOWED_HOSTS = []
 
-_host = os.environ.get['DJANGO_ALLOWED_HOSTS', None]
+_host = os.environ.get('DJANGO_ALLOWED_HOSTS', None)
 if _host != None:
     ALLOWED_HOSTS.append(_host)
 
