@@ -38,6 +38,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn("IOT Monitoring System", self.browser.find_element_by_tag_name("h1").text)
 
         # He found a map
+        self.assertIn()
 
         # He found a list of devices with a status
         table = self.browser.find_element_by_id("devices_list")

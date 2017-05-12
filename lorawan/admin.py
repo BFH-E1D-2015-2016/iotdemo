@@ -1,10 +1,9 @@
-#from django.contrib.gis import admin
+from django.contrib.gis import admin as geoadmin
 from django.contrib import admin
-from leaflet.admin import LeafletGeoAdmin
 
 from lorawan import models
 
-class DeviceAdmin(LeafletGeoAdmin):
+class DeviceAdmin(geoadmin.OSMGeoAdmin):
     list_display = ("name", "DevEUI", "status")
 
 class MessageAdmin(admin.ModelAdmin):

@@ -7,15 +7,13 @@ from django.http import HttpResponse
 
 def dashboard(request):
     devices = Device.objects.all()
+    devices_geojson = serialize('geojson', Device.objects.exclude(location__isnull=True))
 
     params = {
-        "devices": devices
+        "devices": devices,
+        "devices_geojson": devices_geojson,
     }
 
     return render(request, 'dashboard.html', params)
 
-def devices_location(request):
-    geojson = serialize('geojson', Device.objects.exclude(location__isnull=True))
-
-    return HttpResponse(geojson, content_type='json')
 

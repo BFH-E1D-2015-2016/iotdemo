@@ -1,16 +1,9 @@
 {% extends 'base.html' %}
-{% load leaflet_tags %}
-
-
-{% block head %}
-    <title>IOT Monitoring System</title>
-    {%  leaflet_js %}
-    {%  leaflet_css %}
-
-{% endblock %}
 
 {% block css %}
-    <style>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.1.1/css/ol.css" type="text/css">
+
+       <style>
 
     /*
  * Base structure
@@ -121,6 +114,49 @@ body {
     </style>
 {% endblock %}
 
+{% block js %}
+    <script src="https://openlayers.org/en/v4.1.1/build/ol.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+
+            var devices = {{ devices_geojson | safe }};
+            var vectorSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(devices),
+            });
+
+
+            var vectorLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+
+
+
+             var map = new ol.Map({
+                target: 'map',
+                layers: [
+                    new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                    }),
+                    new ol.layer.Vector({
+                        title: 'added Layer',
+                        source: vectorSource
+                      })
+                ],
+            view: new ol.View({    projection: 'EPSG:4326'
+        })
+            });
+
+                 map.getView().fit(vectorSource.getExtent());
+
+    </script>
+{% endblock %}
+
+{% block head %}
+    <title>IOT Monitoring System</title>
+
+{% endblock %}
+
 
 {% block body %}
 
@@ -176,13 +212,8 @@ body {
 
                 <h1>IOT Monitoring System</h1>
 
-                {% leaflet_map "main" callback="main_map_init" %}
+                <div id="map" class="map"></div>
 
-                <script type="text/javascript">
-                    function main_map_init (map, option) {
-
-                    }
-                </script>
 
                 <table id="devices_list" class="table table-striped">
                     <thead>

@@ -170,11 +170,6 @@ STATIC_URL = '/static/'
 if not on_ci:
     SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
 
-LEAFLET_CONFIG = {
-
-    # Use https instead of http:
-   'TILES': 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-}
 
 
 LORAWAN_BACKEND_TTN = {
