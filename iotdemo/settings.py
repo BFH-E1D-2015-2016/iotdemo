@@ -14,41 +14,48 @@ import os
 import getpass
 
 
-
-on_server = False
+# Travis CI use an old Ubuntu 14.04, so we need to change some settings
 on_ci = False
-
-if getpass.getuser() == "django":
-    on_server = True
+on_server = False
 
 if 'TRAVIS' in os.environ:
     on_ci = True
 
+if getpass.getuser() == 'django':
+    on_server = True
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# We can use dotenv to override or create needed environement variable
+# It only works if python-dotenv is installed
 try:
     from dotenv import load_dotenv
 
     dotenv_path = os.path.join(BASE_DIR, ".env")
     load_dotenv(dotenv_path)
 except:
-    # On server, we didn't use dotenv
+    # If python-dotenv is not installed, it'ok
     pass
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xrt1m_7vr)k_pop^j5+@*n0u^%fs)bn2&pg+@9j0s851ecw-4e'
-DEBUG = True
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'xrt1m_7vr)k_pop^j5+@*n0u^%fs)bn2&pg+@9j0s851ecw-4e')
+DEBUG = bool(os.environ.get("DJANGO_DEBUG", False))
 ALLOWED_HOSTS = []
 
+_host = os.environ.get('DJANGO_ALLOWED_HOSTS', None)
+if _host != None:
+    ALLOWED_HOSTS.append(_host)
+
+# Sanity check
+# ===============
+# On prod, we want to be safe
 if on_server:
-    DEBUG = False
-    SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
-    ALLOWED_HOSTS = [os.environ['DJANGO_ALLOWED_HOSTS']]
+    assert ALLOWED_HOSTS != []
+    assert DEBUG == False
+    assert SECRET_KEY != 'xrt1m_7vr)k_pop^j5+@*n0u^%fs)bn2&pg+@9j0s851ecw-4e'
+
+
 
 # Application definition
 
@@ -173,5 +180,5 @@ LEAFLET_CONFIG = {
 LORAWAN_BACKEND_TTN = {
     "REGION": "EU",
     "APP_ID": "bfhtest1",
-    "APP_ACCESS_KEY": os.environ["TTN_ACCESS_KEY"],
+    "APP_ACCESS_KEY": os.environ.get("TTN_ACCESS_KEY", ""),
 }
