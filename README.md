@@ -46,7 +46,9 @@ Django and TDD is to learn this great book:
 
 [Test-Driven Development with Python](http://www.obeythetestinggoat.com/).
 
-#### For average programmer
+#### IOT with Django
+
+- https://opbeat.com/community/posts/iot-with-django-from-hackathon-to-production-by-anna-schneider/
 
 We use the Django Web Framework, our test are written to run with PyTest
 and we use Selenium to do our fonctional testing.
